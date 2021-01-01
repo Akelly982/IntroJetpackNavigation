@@ -86,7 +86,7 @@ public class EndGameFragment extends Fragment {
                 NavOptions navOptions = new NavOptions.Builder().setPopUpTo(R.id.startFragment,true).build();
 
                 navController.navigate(R.id.action_endGameFragment_to_startFragment, null,navOptions);
-                
+                //some change
             }
         });
 
