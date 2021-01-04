@@ -13,6 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.aidankelly.introjetpacknavigation.classes.player;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -73,8 +76,37 @@ public class EndGameFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button restartButton = view.findViewById(R.id.restartGameButton);   // connect your button
+        TextView winLoseTextView = view.findViewById(R.id.endGameWinLoseTextView);   // connect your textViews
+        TextView playerNameTextView = view.findViewById(R.id.endGamePlayerNameTextView);
+        TextView scoreTextView = view.findViewById(R.id.endGameScoreTextView);
+        TextView levelTextView = view.findViewById(R.id.endGameLevelTextView);
+
+
+        if(getArguments() != null){
+            EndGameFragmentArgs args = EndGameFragmentArgs.fromBundle(getArguments()); //get passed arguments / data
+            player myPlayer = args.getPlayer(); //assign received player data
+
+            //apply data
+            playerNameTextView.setText(myPlayer.getPlayerName());
+            scoreTextView.setText(myPlayer.getScore());
+            levelTextView.setText(myPlayer.getLevel());
+            if(myPlayer.getWinLose()){
+                winLoseTextView.setText("Winner");
+            }else{
+                winLoseTextView.setText("Loser");
+            }
+
+        }
+
+
+
+
+
+
 
         final NavController navController = Navigation.findNavController(view);  // establish the nav controller for the current view (view is grabbed from the above used onViewCreated method)
+
+
 
         restartButton.setOnClickListener(new View.OnClickListener() {  //button listener
             @Override

@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,13 +76,30 @@ public class StartFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button startButton = view.findViewById(R.id.startGameButton);   // connect your button
+        final TextView playerNameTextView = view.findViewById(R.id.playerNamePlainText); //connect TextView
+
 
         final NavController navController = Navigation.findNavController(view);  // establish the nav controller for the current view (view is grabbed from the above used onViewCreated method)
+
+
 
         startButton.setOnClickListener(new View.OnClickListener() {  //button listener
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_startFragment_to_gameFragment); //use navController to get your action to move to the next destination
+
+                final String playerName = playerNameTextView.getText().toString();  // use Text view to get string of playerName for passing
+
+                //get a a hold of the action to
+                StartFragmentDirections.ActionStartFragmentToGameFragment myMoveAction = StartFragmentDirections.actionStartFragmentToGameFragment();
+                myMoveAction.setPlayerName(playerName); // set playerName to be passed (string)
+
+                navController.navigate(myMoveAction);  // navigate to new fragment using our action
+
+
+
+                //##old way just navigation to new fragment without args
+                //navController.navigate(R.id.action_startFragment_to_gameFragment); //use navController to get your action to move to the next destination
+
             }
         });
 

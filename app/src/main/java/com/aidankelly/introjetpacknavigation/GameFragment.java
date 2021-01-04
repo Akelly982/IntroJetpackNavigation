@@ -12,6 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Switch;
+import android.widget.TextView;
+
+import com.aidankelly.introjetpacknavigation.classes.player;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,13 +76,43 @@ public class GameFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button stopButton = view.findViewById(R.id.stopGameButton);   // connect your button
+        final TextView currentPlayerTextView = view.findViewById(R.id.currentPlayerTextView);
+        final TextView scorePlainText = view.findViewById(R.id.scorePlainText);
+        final TextView levelPlainText = view.findViewById(R.id.levelPlainText);
+        final Switch winLoseSwitch = view.findViewById(R.id.winLoseSwitch);
 
         final NavController navController = Navigation.findNavController(view);  // establish the nav controller for the current view (view is grabbed from the above used onViewCreated method)
+
+        //getting your passed arguments
+        if(getArguments() != null){ //check if args where passed or not
+            GameFragmentArgs args = GameFragmentArgs.fromBundle(getArguments()); //connect to the passed args
+            String playerName = args.getPlayerName();  //use args to get your passed arguments / values
+            currentPlayerTextView.setText(playerName); // set the passed argument to its text field
+
+        }
+
+
+
 
         stopButton.setOnClickListener(new View.OnClickListener() {  //button listener
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_gameFragment_to_endGameFragment); //use navController to get your action to move to the next destination
+
+                player myPlayer = new player();
+                myPlayer.setPlayerName(currentPlayerTextView.getText().toString());
+                myPlayer.setWinLose(winLoseSwitch.isChecked());
+                myPlayer.setScore(scorePlainText.getText().toString());
+                myPlayer.setLevel(levelPlainText.getText().toString());
+
+                //pass serializable class through action
+                GameFragmentDirections.ActionGameFragmentToEndGameFragment action = GameFragmentDirections.actionGameFragmentToEndGameFragment(myPlayer);
+                navController.navigate(action);
+
+
+
+                // ## old way of navigating to new fragment without args
+                //navController.navigate(R.id.action_gameFragment_to_endGameFragment); //use navController to get your action to move to the next destination
+
             }
         });
 
