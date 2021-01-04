@@ -9,6 +9,11 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+
+        // Safe ARGS dependencies get put in the top level
+        // https://developer.android.com/guide/navigation/navigation-pass-data#:~:text=Use%20Safe%20Args%20to%20pass%20data%20with%20type%20safety,because%20it%20ensures%20type%2Dsafety.
+        def nav_version = "2.3.2"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
     }
 }
 

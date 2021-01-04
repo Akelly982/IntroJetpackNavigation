@@ -31,12 +31,71 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="16dp"
             android:text="Restart Game"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+        <TextView
+            android:id="@+id/endGamePlayerNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="playerName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/EndGameWinLoseTextView" />
+
+        <TextView
+            android:id="@+id/EndGameWinLoseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="WINNER"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="level:"
+            app:layout_constraintEnd_toStartOf="@+id/endGamePlayerNameTextView"
+            app:layout_constraintTop_toBottomOf="@+id/endGamePlayerNameTextView" />
+
+        <TextView
+            android:id="@+id/endGameLevelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="xx"
+            app:layout_constraintStart_toEndOf="@+id/endGamePlayerNameTextView"
+            app:layout_constraintTop_toBottomOf="@+id/endGamePlayerNameTextView" />
+
+        <TextView
+            android:id="@+id/endGameScoreTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="xx"
+            app:layout_constraintStart_toStartOf="@+id/endGameLevelTextView"
+            app:layout_constraintTop_toBottomOf="@+id/endGameLevelTextView" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="score:"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

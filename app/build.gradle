@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 
+// plugin required for SafeArgs
+apply plugin: "androidx.navigation.safeargs"
+
+
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
